@@ -1,29 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 export default function GameOver({ gameState, onTryAgain }) {
-  const [status, setStatus] = useState("running");
+  const isNotOver = gameState.some((value, index) => {
+    return (
+      value === 0 ||
+      value === gameState[index + 4] ||
+      (index % 4 !== 3 && value === gameState[index + 1])
+    );
+  });
 
-  useEffect(() => {
-    const isNotOver = gameState.some((value, index) => {
-      return (
-        value === 0 ||
-        value === gameState[index + 4] ||
-        (index % 4 !== 3 && value === gameState[index + 1])
-      );
-    });
-    if (isNotOver === false) setStatus("over");
-  }, [gameState]);
-
-  function handleTryAgainClick() {
-    onTryAgain();
-    setStatus("running");
-  }
-
-  if (status === "running") return null;
+  if (isNotOver) return null;
   return (
     <div className="game-over">
       <div>Game Over !!</div>
-      <button className="try-again" onClick={handleTryAgainClick}>
+      <button className="try-again" onClick={onTryAgain}>
         Try again
       </button>
     </div>
