@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../styles.css";
+import "../styles.css"; // Why is styles.css imported here when it is already imported in App.js ?
 import Cell from "./Cell";
 import GameOver from "./GameOver";
 import { getTraversalOrder } from "../traversalOrder";

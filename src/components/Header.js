@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles.css";
+import "../styles.css"; // Why is styles.css imported here when it is already imported in App.js ?
 
 export default function Header({ score }) {
   /*
