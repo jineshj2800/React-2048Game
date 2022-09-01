@@ -1,12 +1,16 @@
-import React from "react";
-import "../styles.css";
+import React, { useEffect, useState } from "react";
 
 export default function Header({ score }) {
-  let bestScore = window.localStorage.getItem("bestScore") || 0;
-  if (bestScore < score) {
-    bestScore = score;
-    window.localStorage.setItem("bestScore", score);
-  }
+  const [bestScore, setBestScore] = useState(
+    () => window.localStorage.getItem("bestScore") || 0
+  );
+
+  useEffect(() => {
+    if (bestScore < score) {
+      setBestScore(score);
+      window.localStorage.setItem("bestScore", score);
+    }
+  }, [bestScore, score]);
 
   return (
     <div className="head-container">
