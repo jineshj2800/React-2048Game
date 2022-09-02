@@ -30,8 +30,9 @@ export default function Board({ score, onScoreChange }) {
 
   useEffect(() => {
     if (areEqual(gameState, initialState)) {
-      const newGameState = generatetNewRandomCell(gameState);
-      setGameState(newGameState);
+      const newGameState1 = generatetNewRandomCell(gameState);
+      const newGameState2 = generatetNewRandomCell(newGameState1);
+      setGameState(newGameState2);
     }
   }, [gameState]);
 
