@@ -17,11 +17,15 @@ export default function Header({ score }) {
       <div className="game-title">2048</div>
       <div className="score-title">
         <span>SCORE</span>
-        <span className="score-value">{score}</span>
+        <span data-testid="score" className="score-value">
+          {score}
+        </span>
       </div>
       <div className="score-title">
         <span>BEST</span>
-        <span className="best score-value">{bestScore}</span>
+        <span data-testid="best-score" className="best score-value">
+          {bestScore}
+        </span>
       </div>
     </div>
   );
